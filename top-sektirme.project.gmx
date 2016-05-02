@@ -5,9 +5,22 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound"/>
-  <sprites name="sprites"/>
+  <sprites name="sprites">
+    <sprite>sprites\sprite0</sprite>
+    <sprite>sprites\sprite1</sprite>
+    <sprite>sprites\sprite2</sprite>
+  </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <fonts name="fonts">
+    <font>fonts\font_comic_32</font>
+  </fonts>
+  <objects name="objects">
+    <object>objects\ob_ball</object>
+    <object>objects\ob_wall</object>
+    <object>objects\ob_draw</object>
+    <object>objects\ob_wall_y</object>
+  </objects>
   <rooms name="rooms">
     <room>rooms\roomGame</room>
   </rooms>
