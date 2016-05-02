@@ -26,9 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>grav = 0.9; //yer çekimi
-bsp = 20 // top yükselme hızı
+bsp = 30 // top yükselme hızı
 vsp = 0;    //dikey hızı
-hsp = 40;
+hsp = 0;
 puan=0
 </string>
           </argument>
@@ -65,26 +65,40 @@ if (place_meeting(x,y+vsp,ob_wall))
     vsp=0; // bu komut sayesinde zıpladıktan sonra hareket edebiliyoruz
     
 }
-y +=vsp; //yukarı doğru hız kazandıran komut
+y+=vsp //yukarı doğru hız kazandıran komut
 x-=hsp
 if (mouse_check_button_pressed(mb_left) &amp;&amp; position_meeting(mouse_x,mouse_y,ob_ball))
 {
     if mouse_x&gt;ob_ball.x
     {
     vsp=-bsp;
+    hsp+=5
     x-=hsp
     }
     if mouse_x&lt;ob_ball.x
     {
     vsp=-bsp;
+    hsp-=5
     x+=hsp
     }
     puan+=1
 }
 if place_meeting(x,y,ob_wall_y)
 {
-hsp=-hsp
+hsp=-hsp*0.25
+if hsp&lt;5
+{
+if position_meeting(4,y,ob_ball)
+{
+hsp=-5
 }
+else
+{
+hsp=5
+}
+}
+}
+
 </string>
           </argument>
         </arguments>

@@ -4,7 +4,9 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\game_sound</sound>
+  </sounds>
   <sprites name="sprites">
     <sprite>sprites\sprite0</sprite>
     <sprite>sprites\sprite1</sprite>
@@ -20,6 +22,7 @@
     <object>objects\ob_wall</object>
     <object>objects\ob_draw</object>
     <object>objects\ob_wall_y</object>
+    <object>objects\obj_sound</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\roomGame</room>
