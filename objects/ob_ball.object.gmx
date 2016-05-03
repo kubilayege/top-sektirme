@@ -26,10 +26,11 @@
           <argument>
             <kind>1</kind>
             <string>grav = 0.9; //yer çekimi
-bsp = 30 // top yükselme hızı
+bsp = 20 // top yükselme hızı
 vsp = 0;    //dikey hızı
 hsp = 0;
 puan=0
+
 </string>
           </argument>
         </arguments>
@@ -52,7 +53,7 @@ puan=0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(vsp &lt; 10) //  yerçekimini sağlayan komut
+            <string>if(vsp &lt; 17) //  yerçekimini sağlayan komut
 {
 vsp += grav;
 }
@@ -67,36 +68,64 @@ if (place_meeting(x,y+vsp,ob_wall))
 }
 y+=vsp //yukarı doğru hız kazandıran komut
 x-=hsp
+
+
+if place_meeting(ob_ball.x,ob_ball.y+1,ob_wall)
+{
+game_restart()
+}
+
 if (mouse_check_button_pressed(mb_left) &amp;&amp; position_meeting(mouse_x,mouse_y,ob_ball))
 {
-    if mouse_x&gt;ob_ball.x
+//sağ taraf için 2 farklı tıklanabilir alan
+    if mouse_x&gt;(ob_ball.x+30) and mouse_x&lt;(ob_ball.x+65) 
     {
     vsp=-bsp;
-    hsp+=5
+    hsp=+10                                                  
     x-=hsp
     }
-    if mouse_x&lt;ob_ball.x
+    if mouse_x&gt;(ob_ball.x+1) and mouse_x&lt;=(ob_ball.x+30) 
     {
     vsp=-bsp;
-    hsp-=5
-    x+=hsp
+    hsp=+5                                                   
+    x-=hsp
     }
-    puan+=1
+//sol taraf için 2 farklı tıklanabilir alan    
+    if mouse_x&gt;(ob_ball.x-30) and mouse_x&lt;=(ob_ball.x-1) 
+    {
+    vsp=-bsp;
+    hsp=-10;
+    x+=hsp;                                                          
+    }
+    if mouse_x&gt;(ob_ball.x-65) and mouse_x&lt;=(ob_ball.x-30) 
+    {
+    vsp=-bsp;
+    hsp=-5;
+    x+=hsp;                                                          
+    }
+//ortada tıklanabilen küçük bir alan, topun yukarı gitmesini sağlıyor   
+    if mouse_x&gt;(ob_ball.x-1) and mouse_x&lt;(ob_ball.x+1) 
+    {
+    vsp=-bsp;
+    hsp=0
+    }
+  
+puan+=1
 }
 if place_meeting(x,y,ob_wall_y)
 {
 hsp=-hsp*0.25
-if hsp&lt;5
-{
-if position_meeting(4,y,ob_ball)
-{
-hsp=-5
-}
-else
-{
-hsp=5
-}
-}
+    if hsp&lt;5
+    {
+        if position_meeting(4,y,ob_ball)
+        {
+        hsp=-5
+        }
+        else
+        {
+        hsp=5
+        }
+    }
 }
 
 </string>
